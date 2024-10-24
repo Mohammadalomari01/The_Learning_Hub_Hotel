@@ -1,0 +1,60 @@
+﻿@model The_Learning_Hub_Hotel.Models.PRoomspagecontent
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>PRoomspagecontent</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Projectname" class="control-label"></label>
+                <input asp-for="Projectname" class="form-control" />
+                <span asp-validation-for="Projectname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pagename" class="control-label"></label>
+                <input asp-for="Pagename" class="form-control" />
+                <span asp-validation-for="Pagename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFileTop" class="control-label"></label>
+                <input asp-for="ImageFileTop" class="form-control" />
+                <span asp-validation-for="ImageFileTop" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footerlocation" class="control-label"></label>
+                <input asp-for="Footerlocation" class="form-control" />
+                <span asp-validation-for="Footerlocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footerphonenumber" class="control-label"></label>
+                <input asp-for="Footerphonenumber" class="form-control" />
+                <span asp-validation-for="Footerphonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footeremail" class="control-label"></label>
+                <input asp-for="Footeremail" class="form-control" />
+                <span asp-validation-for="Footeremail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Userloginid" class="control-label"></label>
+                <select asp-for="Userloginid" class ="form-control" asp-items="ViewBag.Userloginid"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

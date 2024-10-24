@@ -1,0 +1,60 @@
+﻿@model The_Learning_Hub_Hotel.Models.PRoom
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>PRoom</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Roomnumber" class="control-label"></label>
+                <input asp-for="Roomnumber" class="form-control" />
+                <span asp-validation-for="Roomnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roomcapacity" class="control-label"></label>
+                <input asp-for="Roomcapacity" class="form-control" />
+                <span asp-validation-for="Roomcapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePerNight" class="control-label"></label>
+                <input asp-for="PricePerNight" class="form-control" />
+                <span asp-validation-for="PricePerNight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Isavailable" class="control-label"></label>
+                <select asp-for="Isavailable" class="form-control">
+                    <option value="">Select Availability</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <span asp-validation-for="Isavailable" class="text-danger"></span>
+            </div>
+      
+            <div class="form-group">
+                <label asp-for="Hotelid" class="control-label"></label>
+                <select asp-for="Hotelid" class ="form-control" asp-items="ViewBag.Hotelid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

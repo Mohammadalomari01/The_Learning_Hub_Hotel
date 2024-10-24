@@ -1,0 +1,78 @@
+﻿@model IEnumerable<The_Learning_Hub_Hotel.Models.PTestimonialpagecontent>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projectname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pagename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagepathTop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagepathMiddle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Footerlocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Footerphonenumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Footeremail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Userlogin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Projectname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pagename)
+            </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.ImagepathTop) asp-append-version="true" style="border-radius:20%;" width="100" height="100" />
+                </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.ImagepathMiddle) asp-append-version="true" style="border-radius:20%;" width="100" height="100" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Footerlocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Footerphonenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Footeremail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Userlogin.Userloginid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Testimonialpagecontentid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Testimonialpagecontentid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Testimonialpagecontentid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

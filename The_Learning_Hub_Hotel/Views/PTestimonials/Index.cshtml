@@ -1,0 +1,69 @@
+﻿@model IEnumerable<The_Learning_Hub_Hotel.Models.PTestimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("TestimonialText")
+            </th>
+            <th>
+                @Html.DisplayName("Rating")
+            </th>
+            <th>
+                @Html.DisplayName("CreatedAt")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+
+            </th>
+            <th>
+                @Html.DisplayName("Hotel")
+            </th>
+            <th>
+                @Html.DisplayName("User")
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.TestimonialText
+                </td>
+                <td>
+                    @item.Rating
+                </td>
+                <td>
+                    @item.CreatedAt
+                </td>
+                <td>
+                    @item.Status
+                </td>
+                <td>
+                    @item.Hotel?.Hotelid
+                </td>
+                <td>
+                    @item.User?.UserId
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Testimonialid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Testimonialid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Testimonialid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

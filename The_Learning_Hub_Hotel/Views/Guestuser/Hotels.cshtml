@@ -1,0 +1,167 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Tuple<IEnumerable<PHotel>, IEnumerable<PTestimonial>, IEnumerable<JoinTabels>, IEnumerable<PUserlogin>, IEnumerable<PRoom>, IEnumerable<PService>, IEnumerable<PUser>>
+
+@{
+
+    ViewData["Title"] = "Hotels Page";
+    Layout = "~/Views/Shared/_GusetLayout1.cshtml";
+    var pagename = ViewBag.pagename;
+}
+<head>
+
+</head>
+<body>
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 p-0" style="background-image: url('/HomeAssest/img/carousel-1.jpg');">
+        <div class="container-fluid page-header-inner py-5">
+            <div class="container text-center pb-5">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">@pagename</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">@pagename</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <!-- Booking Start -->
+    <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="bg-white shadow" style="padding: 35px;">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-3">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input"
+                                           placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="date" id="date2" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select">
+                                    <option selected>Adult</option>
+                                    <option value="1">Adult 1</option>
+                                    <option value="2">Adult 2</option>
+                                    <option value="3">Adult 3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select">
+                                    <option selected>Child</option>
+                                    <option value="1">Child 1</option>
+                                    <option value="2">Child 2</option>
+                                    <option value="3">Child 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+    <!-- Hotels Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-primary text-uppercase">Our @pagename</h6>
+                <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">@pagename</span></h1>
+            </div>
+            <div class="row g-4">
+                @foreach (var item in Model.Item1)
+                {
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="room-item shadow rounded overflow-hidden">
+                            <div class="position-relative">
+                                <img src=@Url.Content("~/Images/" + item.Imagepath) asp-append-version width="500" height="300" alt="">
+                                @* <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small> *@
+                            </div>
+                            <div class="p-4 mt-2">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5 class="mb-0">@item.Hotelname</h5>
+                                    <div class="ps-2">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-3">
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>@item.Location</small>
+                                    @* <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small> *@
+                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                </div>
+                                <p class="text-body mb-3">@item.Description</p>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" asp-action="Rooms" asp-route-hotelId="@item.Hotelid">View Rooms</a>
+                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" asp-controller="LoginAndRegister" asp-action="Register">Please register or login to book</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hotels End -->
+    <!-- Video Start -->
+    <!-- Hotels End -->
+    <!-- Testimonial Start -->
+    <div class="container-xxl testimonial my-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="owl-carousel testimonial-carousel py-5">
+                @if (Model.Item2.Any())
+                {
+                    @foreach (var item in Model.Item2)
+                    {
+                        @if (item.UserId !=null){
+                        <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                            <p>@item.TestimonialText</p>
+                            <div class="d-flex align-items-center">
+                                <img src="@Url.Content("~/Images/" + item.User.Imagepath)" alt="Testimonial Image" style="width: 45px; height: 45px;" class="rounded-circle">
+                                <div class="ps-3">
+                                    <h6 class="fw-bold mb-1">@item.User.Fname</h6>
+                                    <p class="mb-1"><small>@item.CreatedAt</small></p>
+                                    <div class="rating">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            <i class="fa fa-star @(i <= item.Rating ? "text-warning" : "text-secondary")"></i>
+                                        }
+                                    </div>
+                                    <small>@item.Hotel.Hotelname</small>
+                                </div>
+                            </div>
+                            <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                        </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <p>No testimonials available.</p>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <a asp-controller="Guestuser" asp-action="Hotels" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+</body>

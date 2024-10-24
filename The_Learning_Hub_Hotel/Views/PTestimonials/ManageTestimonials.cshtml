@@ -1,0 +1,54 @@
+﻿@model IEnumerable<The_Learning_Hub_Hotel.Models.PTestimonial>
+
+@{
+    ViewData["Title"] = "Manage Testimonials";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Manage Testimonials</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Testimonial Text</th>
+            <th>Rating</th>
+            <th>Created At</th>
+            <th>Hotel</th>
+            
+            <th>User</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TestimonialText</td>
+                    <td>@item.Rating</td>
+                    <td>@item.CreatedAt</td>
+                    <td>@item.Hotelid</td>
+                   
+                    <td>@item.UserId</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <form method="post" asp-action="Approve" asp-route-id="@item.Testimonialid" style="display:inline;">
+                            <input type="submit" value="Approve" class="btn btn-success" />
+                        </form>
+                        <form method="post" asp-action="Reject" asp-route-id="@item.Testimonialid" style="display:inline;">
+                            <input type="submit" value="Reject" class="btn btn-danger" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7">No testimonials available.</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<The_Learning_Hub_Hotel.Models.PBank>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Creditcardnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Money)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Creditcardexp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creditcardnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Money)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creditcardexp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Bankid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Bankid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Bankid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

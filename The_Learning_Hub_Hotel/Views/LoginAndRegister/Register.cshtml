@@ -1,0 +1,118 @@
+﻿@model The_Learning_Hub_Hotel.Models.PUser
+
+@{
+    ViewData["Title"] = "Register";
+    // Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/RegisterAssest/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/RegisterAssest/css/style.css">
+
+</head>
+<body>
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form asp-action="Register" method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label asp-for="Fname" class="control-label"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="Fname" asp-for="Fname" placeholder="Your FName" />
+                            <span asp-validation-for="Fname" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Lname" class="control-label"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="Lname" asp-for="Lname" placeholder="Your LName" />
+                            <span asp-validation-for="Lname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+
+                            <label asp-for="Email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="text" name="Email" asp-for="Email" placeholder="Your Email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber"><i class="zmdi zmdi-phone"></i></label>
+                            <input type="text" name="PhoneNumber" id="PhoneNumber" placeholder="Your Phone Number" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username"><i class="zmdi zmdi-account"></i></label>
+                            <input type="text" name="username" id="username" placeholder="Your username" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImageFile" class="control-label"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="file" name="ImageFile" asp-for="ImageFile" placeholder="Your Image" />
+
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="~/Images/Hotel.jpg" alt="sing up image" style="height: 350px"></figure>
+                    <a asp-action="Login" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="~/RegisterAssest/vendor/jquery/jquery.min.js"></script>
+    <script src="~/RegisterAssest/js/main.js"></script>
+</body>
+</html>
+@* <h1>Register</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label"></label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label"></label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
